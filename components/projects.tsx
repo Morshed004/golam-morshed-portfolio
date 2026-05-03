@@ -1,10 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { motion } from "framer-motion";
 
 const projects = [
   {
@@ -30,50 +29,62 @@ const projects = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
 export function Projects() {
   return (
     <section id="projects" className="py-20 bg-muted/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl font-bold text-center mb-12">Featured Projects</h2>
+        
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          <h2 className="text-3xl font-bold text-center mb-12">Featured Projects</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <Card key={index} className="flex flex-col">
+          {projects.map((project) => (
+            <motion.div key={project.title} variants={cardVariants}>
+              <Card className="flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group">
                 <CardHeader>
-                  <CardTitle>{project.title}</CardTitle>
-                  <CardDescription>{project.description}</CardDescription>
+                  <CardTitle className="group-hover:text-primary transition-colors">
+                    {project.title}
+                  </CardTitle>
+                  <CardDescription className="line-clamp-3">
+                    {project.description}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="grow">
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
-                      <Badge key={tech} variant="outline">
+                      <Badge key={tech} variant="secondary" className="bg-muted">
                         {tech}
                       </Badge>
                     ))}
                   </div>
                 </CardContent>
-                <CardFooter className="flex gap-4">
-                  <Button asChild variant="outline" size="sm">
+                <CardFooter className="flex gap-4 pt-4 border-t">
+                  <Button asChild variant="ghost" size="sm" className="w-full">
                     <a href={project.github} target="_blank" rel="noopener noreferrer">
-                      {/* <Github className="mr-2 h-4 w-4" /> */}
                       Code
-                    </a>
-                  </Button>
-                  <Button asChild size="sm">
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      Live Demo
                     </a>
                   </Button>
                 </CardFooter>
               </Card>
-            ))}
-          </div>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

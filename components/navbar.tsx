@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ModeToggle } from "./mode-toggle";
 // Note: ModeToggle is used as a placeholder below since it's a separate file in your project
@@ -85,11 +85,6 @@ export function Navbar() {
             <Button variant="ghost" size="icon" className="rounded-full">
               <div className="h-5 w-5 rounded-full border-2 border-primary border-t-transparent animate-spin-slow hidden" />
               <ModeToggle />
-            </Button>
-            
-            <Button size="sm" className="rounded-full px-5 gap-2 group">
-              Contact
-              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
 

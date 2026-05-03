@@ -3,16 +3,19 @@ import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Golam Morshed | Full Stack Developer",
-  description: "Professional portfolio of Golam Morshed, a Full Stack Developer specializing in scalable web applications and modern JavaScript ecosystems.",
+  description:
+    "Professional portfolio of Golam Morshed, a Full Stack Developer specializing in scalable web applications and modern JavaScript ecosystems.",
   keywords: "Full Stack Developer, React, Next.js, Node.js, Portfolio",
   openGraph: {
     title: "Golam Morshed | Full Stack Developer",
-    description: "Building scalable web applications with modern JavaScript technologies.",
+    description:
+      "Building scalable web applications with modern JavaScript technologies.",
     url: "https://your-portfolio.vercel.app",
     siteName: "Golam Morshed Portfolio",
     images: [
@@ -27,7 +30,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Golam Morshed | Full Stack Developer",
-    description: "Building scalable web applications with modern JavaScript technologies.",
+    description:
+      "Building scalable web applications with modern JavaScript technologies.",
     images: ["/og-image.png"],
   },
 };
@@ -37,17 +41,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const queryClient = new QueryClient();
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <main>{children}</main>
-        </ThemeProvider>
+        <QueryClientProvider client={queryClient}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <main>{children}</main>
+          </ThemeProvider>
+        </QueryClientProvider>
       </body>
     </html>
   );

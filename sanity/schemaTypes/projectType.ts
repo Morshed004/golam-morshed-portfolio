@@ -58,6 +58,19 @@ export const projectType = defineType({
       },
       description: "Example: React, Next.js, Tailwind CSS",
     }),
+    defineField({
+      name: "github",
+      title: "GitHub Repository",
+      type: "url",
+      description: "Optional: Link to the GitHub repository",
+    }),
+
+    defineField({
+      name: "demo",
+      title: "Live Demo",
+      type: "url",
+      description: "Optional: Link to the live project",
+    }),
   ],
 
   preview: {

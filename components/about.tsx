@@ -1,18 +1,10 @@
-// components/about.tsx
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Code2, Rocket, Shield, Zap, Coffee, Heart } from "lucide-react";
-
-const stats = [
-  { label: "Projects Completed", value: "25+", icon: Rocket },
-  { label: "Years Experience", value: "4+", icon: Code2 },
-  { label: "Happy Clients", value: "20+", icon: Heart },
-  { label: "Coffee Cups", value: "∞", icon: Coffee },
-];
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { motion, useInView, Variants } from "framer-motion";
+import { Code2, Heart, Rocket, Shield, Zap } from "lucide-react";
+import { useRef } from "react";
 
 const interests = [
   "Open Source",
@@ -27,7 +19,7 @@ export function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -38,25 +30,12 @@ export function About() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: { duration: 0.6, ease: "easeOut" },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-    hover: {
-      y: -5,
-      transition: { duration: 0.2 },
     },
   };
 
@@ -78,7 +57,7 @@ export function About() {
           <Badge variant="secondary" className="mb-4 px-4 py-1 text-sm">
             Get to Know Me
           </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-linear-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
             About Me
           </h2>
           <div className="w-24 h-1 bg-primary rounded-full mx-auto" />
@@ -92,7 +71,7 @@ export function About() {
         >
           {/* Main Bio Card */}
           <motion.div variants={itemVariants}>
-            <Card className="mb-12 overflow-hidden border-none shadow-xl bg-gradient-to-br from-background to-secondary/20">
+            <Card className="mb-12 overflow-hidden border-none shadow-xl bg-linear-to-br from-background to-secondary/20">
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl" />
               <CardHeader className="relative">
                 <CardTitle className="text-2xl flex items-center gap-2">
@@ -142,7 +121,7 @@ export function About() {
 
           {/* What Drives Me */}
           <motion.div variants={itemVariants}>
-            <Card className="mb-12 border-none shadow-xl bg-gradient-to-br from-background to-secondary/20">
+            <Card className="mb-12 border-none shadow-xl bg-linear-to-br from-background to-secondary/20">
               <CardHeader>
                 <CardTitle className="text-2xl flex items-center gap-2">
                   <span className="bg-primary/10 p-2 rounded-lg">
@@ -190,7 +169,7 @@ export function About() {
 
           {/* Interests & Beyond */}
           <motion.div variants={itemVariants}>
-            <Card className="border-none shadow-xl bg-gradient-to-br from-background to-secondary/20">
+            <Card className="border-none shadow-xl bg-linear-to-br from-background to-secondary/20">
               <CardHeader>
                 <CardTitle className="text-2xl flex items-center gap-2">
                   <span className="bg-primary/10 p-2 rounded-lg">

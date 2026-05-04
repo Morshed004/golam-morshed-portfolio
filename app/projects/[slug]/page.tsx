@@ -234,10 +234,6 @@ export default function ProjectDetailsPage() {
               {project.title}
             </h1>
 
-            {/* Short Description */}
-            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              {project.description}
-            </p>
 
             {/* Action Buttons */}
             <div className="flex flex-wrap gap-4 mb-12">

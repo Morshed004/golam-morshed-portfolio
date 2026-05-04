@@ -205,12 +205,15 @@ export function Projects() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {projects.map((project, index) => (
-            <Link href={`/projects/${project.slug}`} key={project.title || index}>
+            <Link
+              href={`/projects/${project.slug}`}
+              key={project.title || index}
+            >
               <motion.div variants={cardVariants} custom={index}>
                 <Card className="flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group overflow-hidden">
                   {/* Improved image banner with error handling */}
                   {project.image && (
-                    <div className="relative h-48 overflow-hidden bg-muted">
+                    <div className="relative h-52 overflow-hidden bg-muted">
                       <Image
                         src={urlFor(project.image).url()}
                         alt={project.imageAlt ?? "Project Image"}
@@ -229,7 +232,7 @@ export function Projects() {
                     <CardTitle className="group-hover:text-primary transition-colors line-clamp-1">
                       {project.title}
                     </CardTitle>
-                    <CardDescription className="line-clamp-3">
+                    <CardDescription className="line-clamp-3 min-h-[4.5em]">
                       {project.description}
                     </CardDescription>
                   </CardHeader>
@@ -254,9 +257,7 @@ export function Projects() {
                         size="sm"
                         className="flex-1 gap-2"
                       >
-                        <Link
-                          href={`/projects/${project.slug}`}
-                        >
+                        <Link href={`/projects/${project.slug}`}>
                           View more
                         </Link>
                       </Button>

@@ -82,7 +82,7 @@ export function About() {
                 >
                   I'm a passionate <span className="text-primary font-semibold">Full Stack Developer</span> with expertise in 
                   building scalable web applications using the modern JavaScript ecosystem. My journey in software development 
-                  started 4 years ago, and since then, I've been dedicated to creating efficient, maintainable, and user-centric 
+                  started 2 years ago, and since then, I've been dedicated to creating efficient, maintainable, and user-centric 
                   solutions that make a difference.
                 </motion.p>
                 <motion.p
@@ -95,16 +95,6 @@ export function About() {
                   <span className="text-primary font-semibold">backend</span> technologies, I specialize in developing 
                   robust APIs and responsive web applications. I'm passionate about writing clean code, implementing 
                   best practices, and staying current with emerging technologies to deliver high-quality software solutions.
-                </motion.p>
-                <motion.p
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: 0.5, duration: 0.5 }}
-                  className="text-muted-foreground leading-relaxed"
-                >
-                  When I'm not coding, you'll find me contributing to <span className="text-primary font-semibold">open-source projects</span>,
-                  exploring new technologies, mentoring fellow developers, or sharing knowledge with the developer community.
-                  I believe in continuous learning and the power of collaboration.
                 </motion.p>
               </CardContent>
             </Card>

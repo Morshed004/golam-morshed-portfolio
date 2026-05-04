@@ -261,18 +261,6 @@ export function Projects() {
                         </Link>
                       </Button>
                     )}
-                    {project.demo && (
-                      <Button asChild size="sm" className="flex-1 gap-2">
-                        <a
-                          href={project.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <ExternalLink className="h-4 w-4" />
-                          Live Demo
-                        </a>
-                      </Button>
-                    )}
                     {!project.github && !project.demo && (
                       <Button
                         variant="ghost"

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: "Golam Morshed Portfolio",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.webp",
         width: 1200,
         height: 630,
       },
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "Golam Morshed | Full Stack Developer",
     description:
       "Building scalable web applications with modern JavaScript technologies.",
-    images: ["/og-image.png"],
+    images: ["/og-image.webp"],
   },
 };
 

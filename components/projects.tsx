@@ -254,13 +254,11 @@ export function Projects() {
                         size="sm"
                         className="flex-1 gap-2"
                       >
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <Link
+                          href={`/projects/${project.slug}`}
                         >
-                          Code
-                        </a>
+                          View more
+                        </Link>
                       </Button>
                     )}
                     {project.demo && (

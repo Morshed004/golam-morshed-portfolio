@@ -6,14 +6,6 @@ import { motion, useInView, Variants } from "framer-motion";
 import { Code2, Heart, Rocket, Shield, Zap } from "lucide-react";
 import { useRef } from "react";
 
-const interests = [
-  "Open Source",
-  "Cloud Architecture",
-  "AI Integration",
-  "Developer Tools",
-  "Performance Optimization",
-  "Security Best Practices",
-];
 
 export function About() {
   const ref = useRef(null);
@@ -163,50 +155,6 @@ export function About() {
                     </p>
                   </motion.div>
                 </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          {/* Interests & Beyond */}
-          <motion.div variants={itemVariants}>
-            <Card className="border-none shadow-xl bg-linear-to-br from-background to-secondary/20">
-              <CardHeader>
-                <CardTitle className="text-2xl flex items-center gap-2">
-                  <span className="bg-primary/10 p-2 rounded-lg">
-                    <Heart className="h-6 w-6 text-primary" />
-                  </span>
-                  Beyond Coding
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {interests.map((interest, index) => (
-                    <motion.div
-                      key={interest}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                      transition={{ delay: 0.6 + index * 0.05 }}
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      <Badge variant="secondary" className="px-3 py-1 text-sm cursor-default">
-                        {interest}
-                      </Badge>
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* Quote */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={isInView ? { opacity: 1 } : {}}
-                  transition={{ delay: 0.9 }}
-                  className="mt-6 p-6 rounded-lg bg-primary/5 border border-primary/10"
-                >
-                  <p className="text-center text-muted-foreground italic">
-                    "The best way to predict the future is to create it. I'm committed to building 
-                    technology that empowers people and solves real-world problems."
-                  </p>
-                </motion.div>
               </CardContent>
             </Card>
           </motion.div>

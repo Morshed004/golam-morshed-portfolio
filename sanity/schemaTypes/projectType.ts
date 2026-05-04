@@ -59,6 +59,16 @@ export const projectType = defineType({
       description: "Example: React, Next.js, Tailwind CSS",
     }),
     defineField({
+      name: "features",
+      title: "Features",
+      type: "array",
+      of: [{ type: "string" }],
+      options: {
+        layout: "tags",
+      },
+      description: "Example: Optimized Performance, Secure Authentication, Real-time Updates",
+    }),
+    defineField({
       name: "github",
       title: "GitHub Repository",
       type: "url",

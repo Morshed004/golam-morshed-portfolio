@@ -31,13 +31,13 @@ import { useState } from "react";
 interface Project {
   title: string;
   description: string;
-  longDescription?: string;
   image?: string;
   imageAlt?: string;
   github?: string;
   demo?: string;
   slug: string;
   stack: string[];
+  features: string[]
 }
 
 // Share button component
@@ -168,8 +168,8 @@ export default function ProjectDetailsPage() {
         *[_type == "project" && slug.current == $slug][0]{
           title,
           description,
-          longDescription,
           stack,
+          features,
           image,
           "imageAlt": image.alt,
           github,
@@ -296,7 +296,7 @@ export default function ProjectDetailsPage() {
               </h2>
               <div className="prose prose-gray dark:prose-invert max-w-none">
                 <p className="text-muted-foreground leading-relaxed whitespace-pre-wrap">
-                  {project.longDescription || project.description}
+                  {project.description}
                 </p>
               </div>
             </div>
@@ -324,14 +324,7 @@ export default function ProjectDetailsPage() {
                 Key Features
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {[
-                  "Responsive Design",
-                  "Optimized Performance",
-                  "Secure Authentication",
-                  "Real-time Updates",
-                  "Cross-browser Compatible",
-                  "SEO Friendly",
-                ].map((feature) => (
+                {project.features.map((feature) => (
                   <div key={feature} className="flex items-center gap-2">
                     <CheckCircle2 className="h-4 w-4 text-green-500" />
                     <span className="text-muted-foreground">{feature}</span>

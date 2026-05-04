@@ -213,12 +213,11 @@ export function Projects() {
                 <Card className="flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group overflow-hidden">
                   {/* Improved image banner with error handling */}
                   {project.image && (
-                    <div className="relative h-52 overflow-hidden bg-muted">
+                    <div className="relative h-64 overflow-hidden bg-muted">
                       <Image
                         src={urlFor(project.image).url()}
                         alt={project.imageAlt ?? "Project Image"}
-                        width={1920}
-                        height={1000}
+                        fill
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
 

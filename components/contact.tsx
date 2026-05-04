@@ -18,7 +18,7 @@ export function Contact() {
   };
 
   const contactItems = [
-    { icon: Mail, label: "Email", value: "golammorshed004@gmail.com", action: copyEmail, actionLabel: "Copy" },
+    { icon: Mail, label: "Email", value: "golammorshed004@gmail.com", action: copyEmail },
     { icon: ChevronsLeftRight, label: "GitHub", value: "/Morshed004", href: "https://github.com/Morshed004" },
     { icon: MapPin, label: "Location", value: "Dhaka, Bangladesh" },
   ];
@@ -75,7 +75,6 @@ export function Contact() {
                       ) : (
                         <>
                           <Copy className="h-4 w-4" />
-                          {item.actionLabel}
                         </>
                       )}
                     </Button>

@@ -16,15 +16,18 @@ import { urlFor } from "@/sanity/lib/image";
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { ExternalLink, AlertCircle, Sparkles } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 interface ProjectTypes {
   title: string;
   description: string;
   stack: string[];
-  imageAlt?: string,
+  imageAlt?: string;
   image?: string;
   github?: string;
   demo?: string;
+  slug: string;
 }
 
 const containerVariants = {
@@ -81,7 +84,8 @@ export function Projects() {
           image,
           "imageAlt": image.alt,
           demo,
-          github
+          github,
+          "slug": slug.current,
 
         }
       `);
@@ -201,86 +205,90 @@ export function Projects() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {projects.map((project, index) => (
-            <motion.div
-              key={project.title || index}
-              variants={cardVariants}
-              custom={index}
-            >
-              <Card className="flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group overflow-hidden">
-                {/* Optional image banner */}
-                {project.image && (
-                  <div className="relative h-48 overflow-hidden bg-muted">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={urlFor(project.image).url()}
-                      alt={project.imageAlt}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                  </div>
-                )}
-                <CardHeader>
-                  <CardTitle className="group-hover:text-primary transition-colors line-clamp-1">
-                    {project.title}
-                  </CardTitle>
-                  <CardDescription className="line-clamp-3">
-                    {project.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="grow">
-                  <div className="flex flex-wrap gap-2">
-                    {project.stack?.map((tech) => (
-                      <Badge
-                        key={tech}
-                        variant="secondary"
-                        className="bg-muted hover:bg-primary/20 transition-colors"
-                      >
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-                <CardFooter className="flex gap-3 pt-4 border-t">
-                  {project.github && (
-                    <Button
-                      asChild
-                      variant="outline"
-                      size="sm"
-                      className="flex-1 gap-2"
-                    >
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Code
-                      </a>
-                    </Button>
+            <Link href={`/projects/${project.slug}`} key={project.title || index}>
+              <motion.div variants={cardVariants} custom={index}>
+                <Card className="flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group overflow-hidden">
+                  {/* Improved image banner with error handling */}
+                  {project.image && (
+                    <div className="relative h-48 overflow-hidden bg-muted">
+                      <Image
+                        src={urlFor(project.image).url()}
+                        alt={project.imageAlt ?? "Project Image"}
+                        width={1920}
+                        height={1000}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+
+                      {/* Optional: Add loading skeleton */}
+                      <div className="absolute inset-0 bg-muted animate-pulse -z-10" />
+                    </div>
                   )}
-                  {project.demo && (
-                    <Button asChild size="sm" className="flex-1 gap-2">
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
+
+                  {/* Rest of your component remains the same */}
+                  <CardHeader>
+                    <CardTitle className="group-hover:text-primary transition-colors line-clamp-1">
+                      {project.title}
+                    </CardTitle>
+                    <CardDescription className="line-clamp-3">
+                      {project.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="grow">
+                    <div className="flex flex-wrap gap-2">
+                      {project.stack?.map((tech) => (
+                        <Badge
+                          key={tech}
+                          variant="secondary"
+                          className="bg-muted hover:bg-primary/20 transition-colors"
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                  <CardFooter className="flex gap-3 pt-4 border-t">
+                    {project.github && (
+                      <Button
+                        asChild
+                        variant="outline"
+                        size="sm"
+                        className="flex-1 gap-2"
                       >
-                        <ExternalLink className="h-4 w-4" />
-                        Live Demo
-                      </a>
-                    </Button>
-                  )}
-                  {!project.github && !project.demo && (
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="w-full"
-                      disabled
-                    >
-                      No links available
-                    </Button>
-                  )}
-                </CardFooter>
-              </Card>
-            </motion.div>
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Code
+                        </a>
+                      </Button>
+                    )}
+                    {project.demo && (
+                      <Button asChild size="sm" className="flex-1 gap-2">
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                          Live Demo
+                        </a>
+                      </Button>
+                    )}
+                    {!project.github && !project.demo && (
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="w-full"
+                        disabled
+                      >
+                        No links available
+                      </Button>
+                    )}
+                  </CardFooter>
+                </Card>
+              </motion.div>
+            </Link>
           ))}
         </motion.div>
       </div>

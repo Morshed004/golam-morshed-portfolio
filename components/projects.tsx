@@ -15,7 +15,7 @@ import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
-import { ExternalLink, AlertCircle, Sparkles } from "lucide-react";
+import { AlertCircle, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 

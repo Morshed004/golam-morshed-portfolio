@@ -5,7 +5,7 @@
  */
 
 import { visionTool } from "@sanity/vision";
-import { defineConfig } from "sanity";
+import { buildLegacyTheme, defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
@@ -25,4 +25,14 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
   ],
+  theme: buildLegacyTheme({
+    "--black": "#1d181a",
+    "--component-bg": "#1d181a",
+    "--component-text-color": "#fff",
+
+    "--brand-primary": "#a50036",
+    "--default-button-primary-color": "#a50036",
+    "--state-info-color": "#a50036",
+    "--focus-color": "#a50036"
+  })
 });

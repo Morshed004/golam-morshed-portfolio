@@ -30,8 +30,8 @@ export function Contact() {
   };
 
   const sendMail = () => {
-    const name = formData.name?.trim();
-    const message = formData.message?.trim();
+    const name = formData.name.trim();
+    const message = formData.message.trim();
 
     if (!name || !message) {
       alert("Please fill in all fields");
@@ -43,7 +43,7 @@ export function Contact() {
 
     window.open(
       `https://mail.google.com/mail/?view=cm&fs=1&to=golammorshed004@gmail.com&su=${subject}&body=${body}`,
-      "_blank",
+      "_self",
     );
   };
 

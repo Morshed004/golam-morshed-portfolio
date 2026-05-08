@@ -1,4 +1,3 @@
-// components/contact-minimal.tsx (Alternative minimalist version)
 "use client";
 
 import { Badge } from "@/components/ui/badge";

@@ -5,15 +5,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ModeToggle } from "./mode-toggle";
-// Note: ModeToggle is used as a placeholder below since it's a separate file in your project
-// If you have it, you can swap the placeholder button with <ModeToggle />
 
 const navItems = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
 ];
 
 export function Navbar() {

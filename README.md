@@ -4,12 +4,12 @@
    <img src="https://skill-icons-v2.vercel.app/api/icons?i=nextjs,react,tailwindcss,typescript" />
 </div>
 
-- [✨ Features](#-features)
-- [🛠️ Tech Stack](#️-tech-stack)
-- [📱 Responsive Design](#-responsive-design)
-- [⚡ Performance](#-performance)
-- [🔍 SEO](#-seo)
-- [📧 Contact](#-contact)
+- Features
+- Tech Stack
+- Responsive Design
+- Performance
+- SEO
+- Contact
 
 
 ### 🎨 Modern UI/UX

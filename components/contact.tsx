@@ -31,11 +31,20 @@ export function Contact() {
   };
 
   const sendMail = () => {
-    const subject = encodeURIComponent(`${formData.name} from your portfolio`);
-    const body = encodeURIComponent(formData.message);
+    const name = formData.name?.trim();
+    const message = formData.message?.trim();
+
+    if (!name || !message) {
+      alert("Please fill in all fields");
+      return;
+    }
+
+    const subject = encodeURIComponent(`${name} from your portfolio`);
+    const body = encodeURIComponent(message);
 
     window.open(
       `https://mail.google.com/mail/?view=cm&fs=1&to=golammorshed004@gmail.com&su=${subject}&body=${body}`,
+      "_blank",
     );
   };
 

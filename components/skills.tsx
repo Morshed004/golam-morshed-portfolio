@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 
 const skillCategories = {
   Frontend: ["React", "Next.js", "TanStack Start", "shadcn/ui", "Tailwind CSS"],
-  Backend: ["Express.js", "Hono.js"],
+  Backend: ["Express.js", "Hono.js", "Fiber"],
   Databases: ["PostgreSQL", "MongoDB", "Redis", "Convex"],
   "Auth / Services": ["Better Auth", "Clerk"],
 };
